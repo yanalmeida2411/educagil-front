@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    
+    "esModuleInterop": true,
+    "strict": true,
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "lib": ["esnext", "dom"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "composite": true ,
+     "target": "ES2020",
+    "module": "ESNext",
+    "types": ["cypress"],
+    "outDir": "dist",
+    
+  },
+  "include": [
+    "cypress/**/*.ts",
+    "cypress/**/*.tsx",
+    "**/*.ts"
+, "cypress.config.ts"  ]
+}
