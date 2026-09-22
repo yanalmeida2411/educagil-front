@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+input::-ms-reveal,
+input::-ms-clear,
+input::-webkit-contacts-auto-fill-button,
+input::-webkit-credentials-auto-fill-button {
+  display: none !important;
+}
+
+input[type="password"]::-webkit-inner-spin-button,
+input[type="password"]::-webkit-outer-spin-button,
+input[type="password"]::-webkit-clear-button,
+input[type="password"]::-webkit-credentials-auto-fill-button,
+input[type="password"]::-webkit-contacts-auto-fill-button {
+  visibility: hidden;
+  pointer-events: none;
+  display: none !important;
+}
+
+:root {
+  --color-white: #FFF;
+  --color-blue: #0D4A60;
+  --color-blue-dark: #026B88;
+  --color-delete: #EF3C5C;
+  --color-gray: #6D6D6D;
+  
+}
+
+.text-white {
+  color: var(--color-white);
+}
+
+.text-gray {
+  color:  var(--color-gray);
+  &:hover {
+    color: var(--color-blue);
+  }
+}
+
+.text-color {
+  color: --color-gray;
+  &:hover {
+    color: var(--color-blue);
+  }
+}
+
+.text-blue {
+  color: var(--color-blue);
+}
+
+.text-blue-dark {
+  color: var(--color-blue-dark);
+}
+
+.text-delete {
+  color: var(--color-delete);
+}
+
+.background-blue {
+  background-color: var(--color-blue);
+}
+
+.background-blue-dark {
+   background-color: var(--color-blue-dark);
+   &:hover {
+     background-color: var(--color-blue);
+   }
+}
+
+body {
+  background: var(--background);
+  font-family: var(--font-sans);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 0;
+  width: 0;
+}
+
+input[type="range"]::-moz-range-thumb {
+  height: 0;
+  width: 0;
+  border: none;
+}
