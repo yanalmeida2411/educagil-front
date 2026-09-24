@@ -102,7 +102,7 @@ const [desc, setDesc] = useState(lessonDescription ?? "");
       if (selectedFile) formData.append("video_file", selectedFile);
 
       // Atualiza o vídeo
-     videoResponse = await videoService.updateVideoWithFormData(videoId, formData);
+     videoResponse = await videoService.updateVideo(videoId, formData);
 
       // Atualiza a aula com o mesmo título e descrição
       const lessonUpdateResponse = await lessonsService.updateLesson(Number(lessonId), {
@@ -114,14 +114,15 @@ const [desc, setDesc] = useState(lessonDescription ?? "");
 
     } else {
       // Criação do vídeo
-      videoResponse = await videoService.createVideo({
-        title,
-        lesson: Number(lessonId),
-        youtube_url: youtubeUrl || undefined,
-        video_file: selectedFile ?? undefined,
-        thumbnail: thumbnail || undefined,
-        video_id: "",
-      });
+      const formData = new FormData();
+      formData.append("title", title);
+      formData.append("lesson", String(lessonId));
+      formData.append("video_id", "");
+      if (youtubeUrl) formData.append("youtube_url", youtubeUrl);
+      if (selectedFile) formData.append("video_file", selectedFile);
+      if (thumbnail) formData.append("thumbnail", thumbnail);
+
+      videoResponse = await videoService.createVideo(formData);
 
       // Criação da aula com o mesmo título e descrição
       const lessonResponse = await lessonsService.createLessons({
