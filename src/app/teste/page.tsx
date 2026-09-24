@@ -1,7 +1,7 @@
 'use client'
 import { useEffect } from "react";
 import { parseCookies, setCookie } from "nookies";
-import { api } from "@/services/apiClient";
+import { api } from "@/services/api/apiClient";
 
 export default function TesteRefreshToken() {
   useEffect(() => {
