@@ -10,14 +10,9 @@ const DEFAULT_API_URL = 'http://localhost:8080/api/v1';
 function readApiUrl(): string {
   const raw = process.env.NEXT_PUBLIC_API_URL?.trim();
 
-  if (!raw) {
-    if (process.env.NODE_ENV === 'production') {
-      throw new Error(
-        'NEXT_PUBLIC_API_URL não está definida. Configure-a antes do build de produção.',
-      );
-    }
-    return DEFAULT_API_URL;
-  }
+  // Sem a variável (ex.: deploy só do frontend para apresentação), usa o
+  // backend local; as chamadas falham como erro de rede, já tratado pela UI.
+  if (!raw) return DEFAULT_API_URL;
 
   // Normaliza removendo a barra final para evitar "//" ao concatenar rotas.
   return raw.replace(/\/+$/, '');
